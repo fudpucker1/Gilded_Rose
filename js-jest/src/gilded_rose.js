@@ -83,7 +83,6 @@ class Shop {
     this.isQualityOverFifty(item);
   }
 
-
   updateDaysLeftToSell(item) {
     item.daysLeftToSell -= 1;
   }
@@ -105,7 +104,6 @@ class Shop {
       item.quality = 0;
     }
   }
-
 
 }
 
