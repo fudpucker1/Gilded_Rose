@@ -10,6 +10,7 @@ class Item {
 class Shop {
   constructor(items=[]){
     this.items = items;
+    this.defaultQualityDegradeValue = 1;
   }
 
   processItemsAtShopAfterFullDay() {
@@ -44,28 +45,28 @@ class Shop {
     const itemIsOverDue = this.isItemPastSellDate(item);
 
     if (itemIsOverDue){
-      item.quality -= 4;
+      item.quality -= 4 * this.defaultQualityDegradeValue;
     } else {
-      item.quality -= 2;
+      item.quality -= 2 * this.defaultQualityDegradeValue;
     }
-    this.isQualityLessThanZero(item)
+    this.qualityLessThanZeroCorrection(item)
   }
 
   updateNormalItemQuality(item) {
     const itemIsOverDue = this.isItemPastSellDate(item);
 
     if (itemIsOverDue){
-      item.quality -= 2;
+      item.quality -= 2 * this.defaultQualityDegradeValue;
     } else {
-      item.quality -= 1;
+      item.quality -= 1 * this.defaultQualityDegradeValue;
     }
 
-    this.isQualityLessThanZero(item)
+    this.qualityLessThanZeroCorrection(item)
   }
 
   updateAgedBrieQuality(item) {
       item.quality += 1;
-      this.isQualityOverFifty(item)
+      this.qualityOverFiftyCorrection(item);
   }
 
   updateConcertTicketQuality(item) {
@@ -77,9 +78,9 @@ class Shop {
         item.quality += 2;
         break
       default:
-        item.quality += 1;
+        item.quality += 1 * this.defaultQualityDegradeValue;
     }
-    this.isQualityOverFifty(item);
+    this.qualityOverFiftyCorrection(item);
   }
 
   updateDaysLeftToSell(item) {
@@ -92,13 +93,13 @@ class Shop {
     }
   }
 
-  isQualityOverFifty(item) {
+  qualityOverFiftyCorrection(item) {
     if (item.quality >= 50 ){
       item.quality = 50;
     }
   }
 
-  isQualityLessThanZero(item) {
+  qualityLessThanZeroCorrection(item) {
     if (item.quality < 0 ){
       item.quality = 0;
     }
