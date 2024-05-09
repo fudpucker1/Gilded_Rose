@@ -6,7 +6,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let normalItem = new Item("normal", 10, 20, 0);
     const gildedRose = new Shop([normalItem]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(typeof items[0].daysLeftToSell).toBe('number');
   })
 
@@ -14,7 +14,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let normalItem = new Item("normal", 10, 20, 0);
     const gildedRose = new Shop([normalItem]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(typeof items[0].quality).toBe('number');
   })
 
@@ -22,7 +22,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let normalItem = new Item("normal", 10, 20, 0);
     const gildedRose = new Shop([normalItem]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(19);
     expect(items[0].daysLeftToSell).toBe(9);
   })
@@ -31,7 +31,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let normalItem = new Item("normal", -1, 20, 0);
     const gildedRose = new Shop([normalItem]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(18);
   })
 
@@ -39,7 +39,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let normalItem = new Item("normal", 10, 0, 0);
     const gildedRose = new Shop([normalItem]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(0);
   })
 
@@ -47,7 +47,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let agedBrie = new Item("Aged Brie", 10, 20, 0);
     const gildedRose = new Shop([agedBrie]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(21);
   });
 
@@ -55,7 +55,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let agedBrie = new Item("Aged Brie", 10, 50, 0);
     const gildedRose = new Shop([agedBrie]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(50);
   })
 
@@ -63,7 +63,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let sulfuras = new Item("Sulfuras, Hand of Ragnaros", 1, 80, 0);
     const gildedRose = new Shop([sulfuras]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(80);
   })
 
@@ -71,7 +71,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 8, 20, 0);
     const gildedRose = new Shop([backstagePass]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(22);
   })
 
@@ -79,7 +79,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20, 0);
     const gildedRose = new Shop([backstagePass]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(23);
   });
 
@@ -87,7 +87,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let normalItem = new Item("normal", 10, 20, 0);
     const gildedRose = new Shop([normalItem]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(19);
   });
 
@@ -96,7 +96,7 @@ describe("Gilded Rose Pin Down Tests", () => {
     let conjuredItem = new Item("conjured", 10, 20, 1);
     const gildedRose = new Shop([conjuredItem]);
 
-    const items = gildedRose.updateQuality();
+    const items = gildedRose.processItemsAtShopAfterFullDay();
     expect(items[0].quality).toBe(18);
   })
 

@@ -12,15 +12,16 @@ class Shop {
     this.items = items;
   }
 
-  updateQuality() {
+  processItemsAtShopAfterFullDay() {
     for (let i = 0; i < this.items.length; i++) {
       if (this.items[i].conjured === 0 ){
         this.checkItemName(this.items[i])
       } else {
         this.updateConjuredQuality(this.items[i])
-        this.updateDaysLeftToSell(this.items[i])
       }
-    return this.items;
+
+      this.updateDaysLeftToSell(this.items[i])
+      return this.items;
     }
   }
 
@@ -37,7 +38,6 @@ class Shop {
       default:
         this.updateNormalItemQuality(item)
     };
-    this.updateDaysLeftToSell(item);
   }
 
   updateConjuredQuality(item) {
