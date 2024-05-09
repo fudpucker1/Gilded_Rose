@@ -14,7 +14,7 @@ class Shop {
 
   processItemsAtShopAfterFullDay() {
     for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].conjured === 0 ){
+      if (this.items[i].conjured === false ){
         this.checkItemName(this.items[i])
       } else {
         this.updateConjuredQuality(this.items[i])
@@ -64,9 +64,8 @@ class Shop {
   }
 
   updateAgedBrieQuality(item) {
-    if (item.quality < 50 ) {
       item.quality += 1;
-    }
+      this.isQualityOverFifty(item)
   }
 
   updateConcertTicketQuality(item) {
