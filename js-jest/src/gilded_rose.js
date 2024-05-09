@@ -10,7 +10,7 @@ class Item {
 class Shop {
   constructor(items=[]){
     this.items = items;
-    this.defaultQualityDegradeValue = 1;
+    this.defaultQualityDegradeAppreciateValue = 1;
   }
 
   processItemsAtShopAfterFullDay() {
@@ -45,9 +45,9 @@ class Shop {
     const itemIsOverDue = this.isItemPastSellDate(item);
 
     if (itemIsOverDue){
-      item.quality -= 4 * this.defaultQualityDegradeValue;
+      item.quality -= 4 * this.defaultQualityDegradeAppreciateValue;
     } else {
-      item.quality -= 2 * this.defaultQualityDegradeValue;
+      item.quality -= 2 * this.defaultQualityDegradeAppreciateValue;
     }
     this.qualityLessThanZeroCorrection(item)
   }
@@ -56,9 +56,9 @@ class Shop {
     const itemIsOverDue = this.isItemPastSellDate(item);
 
     if (itemIsOverDue){
-      item.quality -= 2 * this.defaultQualityDegradeValue;
+      item.quality -= 2 * this.defaultQualityDegradeAppreciateValue;
     } else {
-      item.quality -= 1 * this.defaultQualityDegradeValue;
+      item.quality -= 1 * this.defaultQualityDegradeAppreciateValue;
     }
 
     this.qualityLessThanZeroCorrection(item)
@@ -78,7 +78,7 @@ class Shop {
         item.quality += 2;
         break
       default:
-        item.quality += 1 * this.defaultQualityDegradeValue;
+        item.quality += 1 * this.defaultQualityDegradeAppreciateValue;
     }
     this.qualityOverFiftyCorrection(item);
   }
